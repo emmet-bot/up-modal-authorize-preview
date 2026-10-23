@@ -1,9 +1,9 @@
 {
-  "label": "UP modal preview: \"Continue in the UP app\" above \"Wallet Connect to the UP! App\", with a bottom \"Get the UP! App\" link in Authorize (unreleased test build, not production)",
+  "label": "UP modal preview: \"Continue in the UP! App\" above \"Wallet Connect to the UP! App\", with a bottom \"Get the UP! App\" link, plus the fix that keeps a pending WalletConnect pairing alive on mobile return, in Authorize (unreleased test build, not production)",
   "notice": "Preview of unreleased @lukso/up-modal and @lukso/core builds for device testing. Not an official release; the production site is unchanged.",
   "site": "https://emmet-bot.github.io/up-modal-authorize-preview/",
   "basePath": "/up-modal-authorize-preview",
-  "builtAt": "2026-10-23T21:18:50.000Z",
+  "builtAt": "2026-10-23T22:45:57.259Z",
   "authorize": {
     "repository": "https://github.com/lukso-network/service-up-authorize-website",
     "baseCommit": "bd3ddcdb56711fd45e9b05894ad39f91f2f8a25b",
@@ -17,23 +17,33 @@
   },
   "upModal": {
     "repository": "https://github.com/universal-everything/tools-monorepo",
-    "commit": "eeccc624e5ef9ed4d9538f74f116daad7d845a59",
+    "commit": "1166a070435bf6f52147d695c787edded0abddf1",
     "packages": [
       {
         "name": "@lukso/core",
         "version": "1.10.2 (unreleased build)",
-        "tarballSha256": "43753b5e9a5cd564a4621246d3af3905934158b2aa57453898f3ba9156bfdc9c"
+        "tarballSha256": "f35604ea9bfa1865eaf60aebb85b62bccb456d841c75bbe4f07d4ef07e04c9a5"
       },
       {
         "name": "@lukso/up-modal",
         "version": "0.22.0 (unreleased build)",
-        "tarballSha256": "361acb187ab613851f57254e1b7563fdd549aff39de106564210d45a4078dec9"
+        "tarballSha256": "a128f74ed900de823135e043486fa6698e9b97f71c956219fbea314cc976b4bb"
       }
+    ],
+    "changes": [
+      "English label of the UP! App handoff button: \"Continue in the UP! App\" (shown first; Wallet Connect second)",
+      "mobile WalletConnect: a pending wallet approval is kept when the user returns to the browser; no new pairing replaces it while it is pending"
     ]
   },
   "build": {
     "framework": "Next.js 16.1.6 static export",
     "sourceMaps": false,
     "walletConnect": "up-modal default project (no project ID configured)"
-  }
+  },
+  "limitations": [
+    "Not tested on a native phone or tablet with the real UP! App or third-party wallets",
+    "Not tested against the real WalletConnect relay (component tests use mocks)",
+    "Known, non-blocking: tapping a wallet again while an earlier approval is still pending does nothing until that attempt settles or the list is reopened",
+    "Known, non-blocking: tapping Wallet Connect again on a phone while an approval is pending shows a QR code instead of reopening the app"
+  ]
 }

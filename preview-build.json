@@ -1,0 +1,39 @@
+{
+  "label": "UP modal preview: \"Continue in the UP! browser\" in Authorize (unreleased test build, not production)",
+  "notice": "Preview of unreleased @lukso/up-modal and @lukso/core builds for device testing. Not an official release; the production site is unchanged.",
+  "site": "https://emmet-bot.github.io/up-modal-authorize-preview/",
+  "basePath": "/up-modal-authorize-preview",
+  "builtAt": "2026-10-23T18:16:09.337Z",
+  "authorize": {
+    "repository": "https://github.com/lukso-network/service-up-authorize-website",
+    "baseCommit": "bd3ddcdb56711fd45e9b05894ad39f91f2f8a25b",
+    "version": "1.2.1",
+    "previewOnlyChanges": [
+      "@lukso/up-modal and @lukso/core from the unreleased builds below (npm override)",
+      "basePath /up-modal-authorize-preview",
+      "generated authorization links keep the base path",
+      "metadata icons keep the base path"
+    ]
+  },
+  "upModal": {
+    "repository": "https://github.com/universal-everything/tools-monorepo",
+    "commit": "74c318335a3b5e73bafc7e4534ca9fedc354f620",
+    "packages": [
+      {
+        "name": "@lukso/up-modal",
+        "version": "0.22.0 (unreleased build)",
+        "tarballSha256": "27c9a075624b33ccf3b3690f392b5da551b7d8bd6c9fb94f523f89d14f10a620"
+      },
+      {
+        "name": "@lukso/core",
+        "version": "1.10.2 (unreleased build)",
+        "tarballSha256": "2d3274dcceaf756bb6432ef929d6e359ed237adfee442710e5ef0d2565103106"
+      }
+    ]
+  },
+  "build": {
+    "framework": "Next.js 16.1.6 static export",
+    "sourceMaps": false,
+    "walletConnect": "up-modal default project (no project ID configured)"
+  }
+}

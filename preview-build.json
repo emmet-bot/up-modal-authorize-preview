@@ -1,9 +1,9 @@
 {
-  "label": "UP modal preview: \"Wallet Connect to the UP! App\" and \"Continue in the UP! Browser\" buttons with a bottom \"Get the UP! App\" link in Authorize (unreleased test build, not production)",
+  "label": "UP modal preview: \"Continue in the UP app\" above \"Wallet Connect to the UP! App\", with a bottom \"Get the UP! App\" link in Authorize (unreleased test build, not production)",
   "notice": "Preview of unreleased @lukso/up-modal and @lukso/core builds for device testing. Not an official release; the production site is unchanged.",
   "site": "https://emmet-bot.github.io/up-modal-authorize-preview/",
   "basePath": "/up-modal-authorize-preview",
-  "builtAt": "2026-10-23T20:03:07.000Z",
+  "builtAt": "2026-10-23T21:18:50.000Z",
   "authorize": {
     "repository": "https://github.com/lukso-network/service-up-authorize-website",
     "baseCommit": "bd3ddcdb56711fd45e9b05894ad39f91f2f8a25b",
@@ -17,17 +17,17 @@
   },
   "upModal": {
     "repository": "https://github.com/universal-everything/tools-monorepo",
-    "commit": "b8903e03e8a3a7f8b5936f18576022329ca55502",
+    "commit": "eeccc624e5ef9ed4d9538f74f116daad7d845a59",
     "packages": [
       {
         "name": "@lukso/core",
         "version": "1.10.2 (unreleased build)",
-        "tarballSha256": "e5e43843e300be5252679c3adb9f023a27a96b6a8f3f7152f3bc745ff1e64225"
+        "tarballSha256": "43753b5e9a5cd564a4621246d3af3905934158b2aa57453898f3ba9156bfdc9c"
       },
       {
         "name": "@lukso/up-modal",
         "version": "0.22.0 (unreleased build)",
-        "tarballSha256": "81c0239ba6706cdbd674048864cf78e377e72ce0d5ac910e3f59190521b24f4c"
+        "tarballSha256": "361acb187ab613851f57254e1b7563fdd549aff39de106564210d45a4078dec9"
       }
     ]
   },

@@ -1,9 +1,9 @@
 {
-  "label": "UP modal preview: one \"Log in with your Universal Profile\" heading with clear spacing above \"Continue in the UP! App\" and \"Wallet Connect to the UP! App\", a bottom \"Get the UP! App\" link, and the fix that keeps a pending WalletConnect pairing alive on mobile return, in Authorize (unreleased test build, not production)",
+  "label": "UP modal preview: WalletConnect approval toast (\"Confirm in your mobile wallet\", Dismiss) while a mobile-wallet request is pending, plus a temporary manual zero-value wallet-approval test button in Authorize (unreleased test build, not production)",
   "notice": "Preview of unreleased @lukso/up-modal and @lukso/core builds for device testing. Not an official release; the production site is unchanged.",
   "site": "https://emmet-bot.github.io/up-modal-authorize-preview/",
   "basePath": "/up-modal-authorize-preview",
-  "builtAt": "2026-10-23T23:45:53.484Z",
+  "builtAt": "2026-10-29T16:05:37.278Z",
   "authorize": {
     "repository": "https://github.com/lukso-network/service-up-authorize-website",
     "baseCommit": "bd3ddcdb56711fd45e9b05894ad39f91f2f8a25b",
@@ -12,28 +12,35 @@
       "@lukso/up-modal and @lukso/core from the unreleased builds below (npm override)",
       "basePath /up-modal-authorize-preview",
       "generated authorization links keep the base path",
-      "metadata icons keep the base path"
-    ]
+      "metadata icons keep the base path",
+      "temporary wallet-approval test button on the target step (build flag NEXT_PUBLIC_ENABLE_WALLET_APPROVAL_TEST=true; off by default)"
+    ],
+    "walletApprovalTest": {
+      "enabledInThisBuild": true,
+      "shownWhen": "connected through WalletConnect, on the \"Search for Profile\" step",
+      "request": "one eth_sendTransaction per click: from and to the connected account, value 0x0, data 0x",
+      "instruction": "Reject or cancel the request in your wallet. Approving can broadcast a zero-value transaction and spend gas."
+    }
   },
   "upModal": {
     "repository": "https://github.com/universal-everything/tools-monorepo",
-    "commit": "6234ea8fe92ad43e4ce285f6b55987604214d284",
+    "pullRequest": 223,
+    "commit": "cb2b1b84fd5da423e11e9779c88b091cfc1d10a4",
     "packages": [
       {
         "name": "@lukso/core",
         "version": "1.10.2 (unreleased build)",
-        "tarballSha256": "4c44aa4d56f4328e94b380a19d89b5dc4c0937c161b0ef9f1e77376aecc020a5"
+        "tarballSha256": "5e079c2d39d6ff3f115b8de283b724e0faafdd9376af9b8be19286102c002407"
       },
       {
         "name": "@lukso/up-modal",
         "version": "0.22.0 (unreleased build)",
-        "tarballSha256": "54cd32fe866b25c30d2d5b64075d11035976ade845ae0f462c17ff80e053dd26"
+        "tarballSha256": "79f32b50d3eba8091047dc0f908408c0c4b5e0d803583cf1b972470d5468311c"
       }
     ],
     "changes": [
-      "Connect view header: a single heading \"Log in with your Universal Profile\" (English default of connect_modal_title; custom titles still apply) with 32px spacing above the first button; the separate subtitle line is removed",
-      "English label of the UP! App handoff button: \"Continue in the UP! App\" (shown first; Wallet Connect second)",
-      "mobile WalletConnect: a pending wallet approval is kept when the user returns to the browser; no new pairing replaces it while it is pending"
+      "WalletConnect approval toast: while a signing or transaction request is waiting in the mobile wallet, a bottom toast says \"Confirm in your mobile wallet\" with a Dismiss control; it clears when the wallet approves or rejects (on by default; walletConnectApprovalToast: false turns it off)",
+      "kept from earlier previews: one \"Log in with your Universal Profile\" heading with 32px spacing, \"Continue in the UP! App\" first, a bottom \"Get the UP! App\" link, and a pending WalletConnect pairing kept alive on mobile return"
     ]
   },
   "build": {
@@ -43,7 +50,8 @@
   },
   "limitations": [
     "Not tested on a native phone or tablet with the real UP! App or third-party wallets",
-    "Not tested against the real WalletConnect relay (component tests use mocks)",
+    "Not tested against the real WalletConnect relay (browser and component tests use a mocked WalletConnect provider)",
+    "Not tested with a screen reader",
     "Known, non-blocking: tapping a wallet again while an earlier approval is still pending does nothing until that attempt settles or the list is reopened",
     "Known, non-blocking: tapping Wallet Connect again on a phone while an approval is pending shows a QR code instead of reopening the app"
   ]

@@ -1,9 +1,9 @@
 {
-  "label": "UP modal preview: WalletConnect approval toast (\"Confirm in your mobile wallet\", Dismiss) while a mobile-wallet request is pending, plus a temporary manual zero-value wallet-approval test button in Authorize (unreleased test build, not production)",
+  "label": "UP modal preview: compact top pastel-UP-blue WalletConnect approval toast (\"Confirm on your connected device.\", Dismiss) while a WalletConnect request is pending, plus a temporary manual zero-value wallet-approval test button in Authorize (unreleased test build, not production)",
   "notice": "Preview of unreleased @lukso/up-modal and @lukso/core builds for device testing. Not an official release; the production site is unchanged.",
   "site": "https://emmet-bot.github.io/up-modal-authorize-preview/",
   "basePath": "/up-modal-authorize-preview",
-  "builtAt": "2026-10-29T16:05:37.278Z",
+  "builtAt": "2026-10-29T20:16:27Z",
   "authorize": {
     "repository": "https://github.com/lukso-network/service-up-authorize-website",
     "baseCommit": "bd3ddcdb56711fd45e9b05894ad39f91f2f8a25b",
@@ -25,21 +25,23 @@
   "upModal": {
     "repository": "https://github.com/universal-everything/tools-monorepo",
     "pullRequest": 223,
-    "commit": "cb2b1b84fd5da423e11e9779c88b091cfc1d10a4",
+    "commit": "e28ad58433b6b3114f3eb3a522d1e5c8d6a08026",
     "packages": [
       {
         "name": "@lukso/core",
         "version": "1.10.2 (unreleased build)",
-        "tarballSha256": "5e079c2d39d6ff3f115b8de283b724e0faafdd9376af9b8be19286102c002407"
+        "tarballSha256": "d5c8441db6d552df30b0294b641c7fa3152236222ef9b03c2b346edaa92bcd39"
       },
       {
         "name": "@lukso/up-modal",
         "version": "0.22.0 (unreleased build)",
-        "tarballSha256": "79f32b50d3eba8091047dc0f908408c0c4b5e0d803583cf1b972470d5468311c"
+        "tarballSha256": "d2d345198d1a272b57b97fa54e5145d352968e73e699c84475d411e45916319a"
       }
     ],
     "changes": [
-      "WalletConnect approval toast: while a signing or transaction request is waiting in the mobile wallet, a bottom toast says \"Confirm in your mobile wallet\" with a Dismiss control; it clears when the wallet approves or rejects (on by default; walletConnectApprovalToast: false turns it off)",
+      "WalletConnect approval toast: while a signing or transaction request is waiting on the connected WalletConnect device, a slim pastel UP-blue strip at the top of the screen says \"Confirm on your connected device.\" with a Dismiss control; it clears when the wallet approves or rejects (on by default; walletConnectApprovalToast: false turns it off)",
+      "compact on every screen: top max(8px, safe area), 13px text, 28px Dismiss, one line with ellipsis; very short landscape screens use a small top-left box that wraps",
+      "English copy from the Core catalog (Yata); German unchanged",
       "kept from earlier previews: one \"Log in with your Universal Profile\" heading with 32px spacing, \"Continue in the UP! App\" first, a bottom \"Get the UP! App\" link, and a pending WalletConnect pairing kept alive on mobile return"
     ]
   },
@@ -50,8 +52,9 @@
   },
   "limitations": [
     "Not tested on a native phone or tablet with the real UP! App or third-party wallets",
-    "Not tested against the real WalletConnect relay (browser and component tests use a mocked WalletConnect provider)",
+    "Not tested against the real WalletConnect relay (browser tests use a mocked WalletConnect connection and provider)",
     "Not tested with a screen reader",
+    "The toast can cover a host page header fixed to the top of the screen (apps can turn the toast off)",
     "Known, non-blocking: tapping a wallet again while an earlier approval is still pending does nothing until that attempt settles or the list is reopened",
     "Known, non-blocking: tapping Wallet Connect again on a phone while an approval is pending shows a QR code instead of reopening the app"
   ]
